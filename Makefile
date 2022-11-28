@@ -1,5 +1,5 @@
 EXENAME = main
-OBJS = main.o
+OBJS = main.o utils.o
 
 CXX = clang++
 CXXFLAGS = -std=c++0x -c -g -O0 -Wall -Wextra

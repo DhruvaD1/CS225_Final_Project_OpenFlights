@@ -1,5 +1,6 @@
 #include <iostream>
-
+#include "utils.h"
 int main() {
-    std::cout << "testing" << std::endl;
+    std::string str = file_to_string("data.txt");
+    std::cout << str << std::endl;
 }
