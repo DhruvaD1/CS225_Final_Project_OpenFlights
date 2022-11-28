@@ -1,5 +1,5 @@
 EXENAME = main
-OBJS = main.o create_graoh.o
+OBJS = main.o
 
 CXX = clang++
 CXXFLAGS = -std=c++0x -c -g -O0 -Wall -Wextra
@@ -9,13 +9,13 @@ LDFLAGS = -std=c++0x
 all: ${EXENAME}
 
 $(EXENAME): $(OBJS)
-    $(LD) $^ $(LDFLAGS) -o $@
+	$(LD) $^ $(LDFLAGS) -o $@
 
 main.o: main.cpp
-    $(CXX) $< $(CXXFLAGS)
+	$(CXX) $< $(CXXFLAGS)
 
 create_graoh.o: create_graoh.cpp
-    $(CXX) $< $(CXXFLAGS)
+	$(CXX) $< $(CXXFLAGS)
 
 clean:
-    -rm -f *.o $(EXENAME)
+	-rm -f *.o $(EXENAME)
