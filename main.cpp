@@ -26,4 +26,28 @@ int main() {
             cout << tmp.at(i) << " ";
         }
     }
+
+    map<string, vector<string>> data_maps;
+    vector<string> lines;
+
+    int dataSize = SplitString(data, '\n', lines);
+    for (int i = 0; i < dataSize; i++) {
+        vector<string> vec;
+        SplitString(lines.at(i), ',', vec);
+
+        vec.erase(vec.begin());
+        std::string airport = vec.at(0);
+        vec.erase(vec.begin());
+        data_maps[airport] = vec;
+        std::cout << "-----------------" << std::endl;
+        for (auto s : vec) {
+            std::cout << s << std::endl;
+        }
+
+        std::cout << "-----------------" << std::endl;
+    }
+
+
+
+
 }
