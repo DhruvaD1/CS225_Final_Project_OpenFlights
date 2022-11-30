@@ -17,6 +17,7 @@ vector<string> BFS(map<string, vector<string>> route_maps, string starting_airpo
         for (string neighbor : route_maps[curr_airport]) {
             if (visited.find(neighbor) == visited.end()) {
                 q.push(neighbor);
+                visited.insert(neighbor);
             }
         }
     } 
