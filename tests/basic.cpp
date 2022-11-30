@@ -1,8 +1,8 @@
 #include <catch2/catch_test_macros.hpp>
 #include "../src/bfs.cpp"
 #include "../src/bfs.h"
-// #include "../src/parseInput.cpp"
-// #include "../src/parseInput.h"
+#include "../src/parseInput.cpp"
+#include "../src/parseInput.h"
 #include <map>
 #include <vector>
 #include <iostream>
@@ -94,15 +94,27 @@ TEST_CASE("Test1", "[valgrind][weight=1]"){
         REQUIRE(out3 == ans);
     }
 }
-// TEST_CASE("Test2", "[valgrind][weight=1]"){
-//     SECTION("Parse data and creates adjancecy list") {
-//         parseInput in;
+TEST_CASE("Test2", "[valgrind][weight=1]"){
+    SECTION("Parse data and creates adjancecy list") {
+        parseInput in;
 
-//         map<string, vector<string>> out = parseRoutes("test1.txt");
+        map<string, vector<string>> tmp = parseRoutes("../src/routes.txt");
+
+        // AAE flies to these airports
+        vector<string> ans {"ALG", "CDG", "IST", "ORY", "LYS", "ORN", "MRS"};
+        std::sort(ans.begin(), ans.end());
+        vector<string> out = tmp["AAE"];
+        std::sort(out.begin(), out.end());
+
+        //basic test case to see if data stores all the correct info
+        REQUIRE(out==ans);
         
-//         for (auto const &pair: out) {
-//             std::cout << "{" << pair.first <<  "}\n";
-//         }
+        // CEK flies to these airports
+        vector<string> ans2 {"KZN", "OVB", "PRG", "FRU", "OSS", "DME", "DYU", "EVN", "LBD", "LED", "SVO", "DWC", "NMA", "TAS"};
+        std::sort(ans2.begin(), ans2.end());
+        vector<string> out2 = tmp["CEK"];
+        std::sort(out2.begin(), out2.end());
 
-//     }
-// }
+        REQUIRE(ans2 == out2);
+    }
+}

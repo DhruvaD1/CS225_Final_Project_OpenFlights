@@ -1,6 +1,6 @@
 #include <iostream>
 #include <vector>
-#include "../utils.h"
+#include "utils.h"
 #include <map>
 #include <algorithm>
 #include "bfs.h"
