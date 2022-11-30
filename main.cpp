@@ -54,8 +54,8 @@ int main() {
     }
 
     // ONCE AN ADJACENCY LIST IS MADE, REPLACE "route_maps" parameter with its name
-    // vector<string> bfs_traversal = BFS(route_maps, "SFO");
-    // for (string e : bfs_traversal) {
-    //     cout << e << endl;
-    // }
+    vector<string> bfs_traversal = BFS(route_maps, "SFO");
+    for (string e : bfs_traversal) {
+        cout << e << endl;
+    }
 }   
