@@ -3,7 +3,11 @@
 #include "utils.h"
 #include <map>
 #include <algorithm>
+#include "bfs.h"
+
 using namespace std;
+
+
 int main() {
     string data = file_to_string("data.txt");
     string routes = file_to_string("routes.txt");
@@ -19,13 +23,15 @@ int main() {
             route_maps[vec.at(2)].push_back(vec.at(4));
         }
     }
-    for (auto const& it : route_maps) {
-        cout << it.first << endl;
-        vector<string> tmp = it.second;
-        for (unsigned i = 0; i < tmp.size(); i++) {
-            cout << tmp.at(i) << " ";
-        }
-    }
+
+    // for (auto const& it : route_maps) {
+    //     cout << it.first;
+    //     vector<string> tmp = it.second;
+    //     for (unsigned i = 0; i < tmp.size(); i++) {
+    //         cout << tmp.at(i) << " ";
+    //     }
+    //     cout << endl;
+    // }
 
     map<string, vector<string>> data_maps;
     vector<string> lines;
@@ -39,15 +45,17 @@ int main() {
         std::string airport = vec.at(0);
         vec.erase(vec.begin());
         data_maps[airport] = vec;
-        std::cout << "-----------------" << std::endl;
-        for (auto s : vec) {
-            std::cout << s << std::endl;
-        }
+        // std::cout << "-----------------" << std::endl;
+        // for (auto s : vec) {
+        //     std::cout << s << std::endl;
+        // }
 
-        std::cout << "-----------------" << std::endl;
+        // std::cout << "-----------------" << std::endl;
     }
 
-
-
-
-}
+    // ONCE AN ADJACENCY LIST IS MADE, REPLACE "route_maps" parameter with its name
+    // vector<string> bfs_traversal = BFS(route_maps, "SFO");
+    // for (string e : bfs_traversal) {
+    //     cout << e << endl;
+    // }
+}   
