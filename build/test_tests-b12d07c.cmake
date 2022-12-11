@@ -1,5 +1,0 @@
-add_test( Test1 /workspaces/cs225/cs225_final_project_openflights/build/test Test1  )
-set_tests_properties( Test1 PROPERTIES WORKING_DIRECTORY /workspaces/cs225/cs225_final_project_openflights/build)
-add_test( Test2 /workspaces/cs225/cs225_final_project_openflights/build/test Test2  )
-set_tests_properties( Test2 PROPERTIES WORKING_DIRECTORY /workspaces/cs225/cs225_final_project_openflights/build)
-set( test_TESTS Test1 Test2)
