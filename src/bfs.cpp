@@ -1,6 +1,13 @@
-#include "bfs.h"
 #include <iostream>
+#include <vector>
+#include "utils.h"
 #include <cmath>
+#include <map>
+#include <algorithm>
+#include "bfs.h"
+#include "parseInput.h"
+#include <string>
+#include <map>
 #include <utility>
 #include <set>
 #include <cassert>
@@ -10,8 +17,10 @@
 
 #define pi 3.14159265358979323846
 
+using namespace std;
 
-std::string file_to_string(const std::string& filename){
+
+std::string BFS::file_to_string(const std::string& filename){
   std::ifstream text(filename);
 
   std::stringstream strStream;
@@ -21,7 +30,7 @@ std::string file_to_string(const std::string& filename){
   return strStream.str();
 }
 
-int SplitString(const std::string & str1, char sep, std::vector<std::string> &fields) {
+int BFS::SplitString(const std::string & str1, char sep, std::vector<std::string> &fields) {
     std::string str = str1;
     std::string::size_type pos;
     while((pos=str.find(sep)) != std::string::npos) {
@@ -32,7 +41,7 @@ int SplitString(const std::string & str1, char sep, std::vector<std::string> &fi
     return fields.size();
 }
 
-map<string, vector<string>> parseData(string data) {
+map<string, vector<string>> BFS::parseData(string data) {
     map<string, vector<string>> data_maps;
     vector<string> lines;
 
@@ -42,28 +51,38 @@ map<string, vector<string>> parseData(string data) {
         SplitString(lines.at(i), ',', vec);
 
         vec.erase(vec.begin());
-        std::string airport = vec.at(3);
-        vec.erase(vec.begin());
-        data_maps[airport] = {vec.at(4),vec.at(5)};
-    }
+        
+        if(vec.at(3).length()==5){
 
+                std::string airport = vec.at(3).substr(1,3);
+                vec.erase(vec.begin());
+        data_maps[airport] = {vec.at(4),vec.at(5)};
+        }
+    }
+ 
     return data_maps;
 }
 
 
-vector<string> runBFS(map<string, vector<string>> route_maps, string starting_airport)
+vector<string> BFS::runBFS(map<string, vector<string>> route_maps, string starting_airport)
 {
-    out.clear();
-    in.clear();
-    path.clear();
     vector<string> airports_traversed;
     set<string> visited;
     vector<pair<double,double>> pos;
-    
+    string data = file_to_string("data.txt");
+    map<string,vector<string>> maper= parseData(data);
+
+for(auto i = route_maps.begin(); i!=route_maps.end();++i){
+    if(maper.find(i->first)==maper.end()){
+        i=route_maps.erase(i);
+    }
+}
+
     queue<string> q;
     q.push(starting_airport);
 
     while (!q.empty()) {
+
         string curr_airport = q.front();
         //finds the number of airports that you can fly to from curr_airports
         out[curr_airport] = route_maps[curr_airport].size();
@@ -79,27 +98,26 @@ vector<string> runBFS(map<string, vector<string>> route_maps, string starting_ai
                 visited.insert(neighbor);
             }
         }
+        
+
     } 
-    string data = file_to_string("data.txt");
-    map<string,vector<string>> maper= parseData(data);
-        string two =airports_traversed[airports_traversed.size()-1];
+
+        string two =airports_traversed[airports_traversed.size()-2];
         string one =airports_traversed[0];
+        vector<string> oner = maper[one];
+        vector<string> twoer = maper[two];
 
-        for(auto const& p: maper){
-        if((p.first.substr(1,3) ==one || p.first.substr(1,3)==two ) ){
-            for(auto pp: p.second){
-            cout<<"positon of airport: " <<pp<<" "<<endl;
-            }
-        }
-        
-        }
-
-        
+        double sub = stod(oner.at(1))-stod(twoer.at(1));
+        double dist;
+        dist = sin(stod(oner.at(0))/180*pi)*sin(stod(twoer.at(0))/180*pi)+cos(stod(oner.at(0))/180*pi)*cos(stod(twoer.at(0))/180*pi)*cos(sub/180*pi);
+        dist=acos(dist);
+        dist=dist*6371;
+        cout<<"The total distance in km between the two airports is : "<< dist<<endl;
         return airports_traversed;
 }
 
 
-map<string, vector<string>> parseRoutes(string routeFile) {
+map<string, vector<string>> BFS::parseRoutes(string routeFile) {
     string routes = file_to_string(routeFile);
     vector<string> line;
     int size = SplitString(routes, '\n', line);
