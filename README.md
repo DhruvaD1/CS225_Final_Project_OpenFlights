@@ -6,7 +6,8 @@ The project uses the Open Flights data set to run several graph algorithms on it
 
 
 ## Group Members
-Dhruva Dammanna netid: dhruvad2
+Dhruva Dammanna (dhruvad2)
+Alan Zhang (alanyz2)
 
 ## How to run
 To run the code run make main in the termainal
