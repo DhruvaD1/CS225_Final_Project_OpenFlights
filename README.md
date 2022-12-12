@@ -10,7 +10,9 @@ The main goal of the project is to devlop code to answer the questions what is t
 
 ## Group Members
 Dhruva Dammanna (dhruvad2)\
-Alan Zhang (alanyz2)
+Alan Zhang (alanyz2)\
+Jalen Xing (jalenx2)\
+David Lin (davidl16)
 
 ## How to run
 To run the code run make main in the termainal and do ./main to run
