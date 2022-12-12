@@ -31,6 +31,9 @@ Lastly in the data there were some places like helicopter landing sites that air
 
 The BFS created ran BFS search from a chosen starting point and returned a vector of every airport in order visted. Also the function printed out how many kilometers apart the two airports at the start and the end were. BFS runs in O(m+n) runtime and O(V) space.
 
+![](BFS.gif)
+
+
 ## Dijkstra 
 
 Dijkstra algorithm was made and used to find the shortest path in a weighted graph. It is especiall useful in this because it will give the fastest route from one airport to another. It runs in O(V log V) runtime and O(V) space.
