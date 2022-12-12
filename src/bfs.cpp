@@ -1,14 +1,64 @@
 #include "bfs.h"
 #include <iostream>
 #include <cmath>
+#include <utility>
+#include <set>
+#include <cassert>
+#include <fstream>
+#include <signal.h>
+#include <sstream>
 
-vector<string> BFS::runBFS(map<string, vector<string>> route_maps, string starting_airport)
+#define pi 3.14159265358979323846
+
+
+std::string file_to_string(const std::string& filename){
+  std::ifstream text(filename);
+
+  std::stringstream strStream;
+  if (text.is_open()) {
+    strStream << text.rdbuf();
+  }
+  return strStream.str();
+}
+
+int SplitString(const std::string & str1, char sep, std::vector<std::string> &fields) {
+    std::string str = str1;
+    std::string::size_type pos;
+    while((pos=str.find(sep)) != std::string::npos) {
+        fields.push_back(str.substr(0,pos));
+        str.erase(0,pos+1);  
+    }
+    fields.push_back(str);
+    return fields.size();
+}
+
+map<string, vector<string>> parseData(string data) {
+    map<string, vector<string>> data_maps;
+    vector<string> lines;
+
+    int dataSize = SplitString(data, '\n', lines);
+    for (int i = 0; i < dataSize; i++) {
+        vector<string> vec;
+        SplitString(lines.at(i), ',', vec);
+
+        vec.erase(vec.begin());
+        std::string airport = vec.at(3);
+        vec.erase(vec.begin());
+        data_maps[airport] = {vec.at(4),vec.at(5)};
+    }
+
+    return data_maps;
+}
+
+
+vector<string> runBFS(map<string, vector<string>> route_maps, string starting_airport)
 {
     out.clear();
     in.clear();
     path.clear();
     vector<string> airports_traversed;
     set<string> visited;
+    vector<pair<double,double>> pos;
     
     queue<string> q;
     q.push(starting_airport);
@@ -30,8 +80,40 @@ vector<string> BFS::runBFS(map<string, vector<string>> route_maps, string starti
             }
         }
     } 
-    
-    return airports_traversed;
+    string data = file_to_string("data.txt");
+    map<string,vector<string>> maper= parseData(data);
+        string two =airports_traversed[airports_traversed.size()-1];
+        string one =airports_traversed[0];
+
+        for(auto const& p: maper){
+        if((p.first.substr(1,3) ==one || p.first.substr(1,3)==two ) ){
+            for(auto pp: p.second){
+            cout<<"positon of airport: " <<pp<<" "<<endl;
+            }
+        }
+        
+        }
+
+        
+        return airports_traversed;
+}
+
+
+map<string, vector<string>> parseRoutes(string routeFile) {
+    string routes = file_to_string(routeFile);
+    vector<string> line;
+    int size = SplitString(routes, '\n', line);
+    map<string, vector<string>> route_maps;
+    for (int i = 0; i < size; i++) {
+        vector<string> vec;
+        SplitString(line.at(i), ',', vec);
+        vector<string> tmp = route_maps[vec.at(2)];
+        if (std::find(tmp.begin(), tmp.end(), vec.at(4)) == tmp.end()) {
+            route_maps[vec.at(2)].push_back(vec.at(4));
+        }
+    }
+
+    return route_maps;
 }
 
 /**
