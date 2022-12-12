@@ -51,5 +51,9 @@ The run time is O(V+E) and space is O(V).
 
 ## Findings
 
-With the BFS we found the BFS Traversal from a starting point
+With the BFS we found the BFS Traversal from a starting point and the distance traveled. We noticed that pretty much every airport in the world is connected in some way. So you can go from pretty much any aiport to another aiport.
+
+With the Euler Cycle we saw that there are a lot of cycles between airports. So being able to going in a full cycle from any airport is possible from most airports.
+
+With the Dijkstra algorithm we noticed that the shortest path from an aiport normally involved passing through a popular airport like ORD, DFW, and LAX because they have flights to many different airports.
 
