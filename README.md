@@ -48,3 +48,8 @@ Eulers cycle detection is a way to determine if there is a cycle at a given poin
 The run time is O(V+E) and space is O(V).
 
 ![](euler.gif)
+
+## Findings
+
+With the BFS we found the BFS Traversal from a starting point
+
