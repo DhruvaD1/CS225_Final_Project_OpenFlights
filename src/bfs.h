@@ -5,10 +5,18 @@
 #include <queue>
 #include <set>
 #include <map>
-
 using namespace std;
 
 class BFS {
     public: 
         vector<string> runBFS(map<string, vector<string>> route_maps, string starting_airport);
+        vector<string> findEulerPath(map<string, vector<string>> routes, string start_airport);
+        int hasEulerPath(vector<string> airports, string start_airport);
+        void dfs(map<string, vector<string>> routes, string current_airport);
+    private:
+        //the number of airports that directly fly to a specific airport
+        map<string, int> in;
+        //the number of airports you can directly fly to from each airport
+        map<string, int> out;
+        vector<string> path;
 };
