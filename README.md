@@ -10,4 +10,6 @@ Dhruva Dammanna (dhruvad2)\
 Alan Zhang (alanyz2)
 
 ## How to run
-To run the code run make main in the termainal
+To run the code run make main in the termainal and do ./main to run
+
+To run the test cases make test in the terminal and then do ./test to run the tests
