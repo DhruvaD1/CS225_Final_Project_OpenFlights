@@ -38,7 +38,11 @@ The BFS created ran BFS search from a chosen starting point and returned a vecto
 
 Dijkstra algorithm was made and used to find the shortest path in a weighted graph. It is especiall useful in this because it will give the fastest route from one airport to another. It runs in O(V log V) runtime and O(V) space.
 
+![](Dij.gif)
+
 ## Eulers
 
 Eulers cycle detection is a way to determine if there is a cycle at a given point of a graph. We can use it here to detect if you can forms a cycle out of airports.
 The run time is O(V+E) and space is O(V).
+
+![](euler.gif)
