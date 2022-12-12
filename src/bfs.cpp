@@ -1,19 +1,91 @@
-#include "bfs.h"
 #include <iostream>
+#include <vector>
+#include "utils.h"
 #include <cmath>
+#include <map>
+#include <algorithm>
+#include "bfs.h"
+#include "parseInput.h"
+#include <string>
+#include <map>
+#include <utility>
+#include <set>
+#include <cassert>
+#include <fstream>
+#include <signal.h>
+#include <sstream>
+
+#define pi 3.14159265358979323846
+
+using namespace std;
+
+std::string BFS::file_to_string(const std::string& filename){
+  std::ifstream text(filename);
+
+  std::stringstream strStream;
+  if (text.is_open()) {
+    strStream << text.rdbuf();
+  }
+  return strStream.str();
+}
+
+int BFS::SplitString(const std::string & str1, char sep, std::vector<std::string> &fields) {
+    std::string str = str1;
+    std::string::size_type pos;
+    while((pos=str.find(sep)) != std::string::npos) {
+        fields.push_back(str.substr(0,pos));
+        str.erase(0,pos+1);  
+    }
+    fields.push_back(str);
+    return fields.size();
+}
+
+map<string, vector<string>> BFS::parseData(string data) {
+    map<string, vector<string>> data_maps;
+    vector<string> lines;
+
+    int dataSize = SplitString(data, '\n', lines);
+    for (int i = 0; i < dataSize; i++) {
+        vector<string> vec;
+        SplitString(lines.at(i), ',', vec);
+
+        vec.erase(vec.begin());
+        
+        if(vec.at(3).length()==5){
+
+                std::string airport = vec.at(3).substr(1,3);
+                vec.erase(vec.begin());
+        data_maps[airport] = {vec.at(4),vec.at(5)};
+        }
+    }
+ 
+    return data_maps;
+}
+
 
 vector<string> BFS::runBFS(map<string, vector<string>> route_maps, string starting_airport)
 {
-    out.clear();
-    in.clear();
-    path.clear();
+    map<string, int> in;
+        //the number of airports you can directly fly to from each airport
+    map<string, int> out;
+    vector<string> path;
     vector<string> airports_traversed;
     set<string> visited;
-    
+    vector<pair<double,double>> pos;
+    string data = file_to_string("data.txt");
+    map<string,vector<string>> maper= parseData(data);
+    //parsing the data and removing values that are not in both hashmaps
+for(auto i = route_maps.begin(); i!=route_maps.end();++i){
+    if(maper.find(i->first)==maper.end()){
+        i=route_maps.erase(i);
+    }
+}
+
     queue<string> q;
     q.push(starting_airport);
 
     while (!q.empty()) {
+
         string curr_airport = q.front();
         //finds the number of airports that you can fly to from curr_airports
         out[curr_airport] = route_maps[curr_airport].size();
@@ -30,8 +102,38 @@ vector<string> BFS::runBFS(map<string, vector<string>> route_maps, string starti
             }
         }
     } 
-    
-    return airports_traversed;
+        //calcualting the distance between the starting airport and last airport
+        string two =airports_traversed[airports_traversed.size()-2];
+        string one =airports_traversed[0];
+        vector<string> oner = maper[one];
+        vector<string> twoer = maper[two];
+
+
+        double sub = stod(oner.at(1))-stod(twoer.at(1));
+        double dist;
+        dist = sin(stod(oner.at(0))/180*pi)*sin(stod(twoer.at(0))/180*pi)+cos(stod(oner.at(0))/180*pi)*cos(stod(twoer.at(0))/180*pi)*cos(sub/180*pi);
+        dist=acos(dist);
+        dist=dist*6371;
+        cout<<"The total distance in km between the two airports is : "<< dist<<endl;
+        return airports_traversed;
+}
+
+
+map<string, vector<string>> BFS::parseRoutes(string routeFile) {
+    string routes = file_to_string(routeFile);
+    vector<string> line;
+    int size = SplitString(routes, '\n', line);
+    map<string, vector<string>> route_maps;
+    for (int i = 0; i < size; i++) {
+        vector<string> vec;
+        SplitString(line.at(i), ',', vec);
+        vector<string> tmp = route_maps[vec.at(2)];
+        if (std::find(tmp.begin(), tmp.end(), vec.at(4)) == tmp.end()) {
+            route_maps[vec.at(2)].push_back(vec.at(4));
+        }
+    }
+
+    return route_maps;
 }
 
 /**
