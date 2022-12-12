@@ -3,10 +3,13 @@
 #include "../src/bfs.h"
 #include "../src/parseInput.cpp"
 #include "../src/parseInput.h"
+#include "../src/WeightedGraph.cpp"
+#include "../src/WeightedGraph.h"
 #include <map>
 #include <vector>
 #include <iostream>
 #include <algorithm>
+#include <numbers>
 
 using namespace std;
 // #include "../src/main.cpp"
@@ -96,7 +99,8 @@ TEST_CASE("Test1 BFS", "[valgrind][weight=1]"){
         REQUIRE(out3 == ans);
     }
 }
-TEST_CASE("Test2 Data", "[valgrind][weight=1]"){
+
+TEST_CASE("Test2 parseRoutes / adjacency list", "[valgrind][weight=1]"){
     SECTION("Parse data and creates adjancecy list") {
 
         map<string, vector<string>> tmp = parseRoutes("../src/routes.txt");
@@ -120,7 +124,7 @@ TEST_CASE("Test2 Data", "[valgrind][weight=1]"){
     }
 }
 
-TEST_CASE("Test3 Eulerian Path", "[valgrind][weight=1]"){
+TEST_CASE("Eulerian Path", "[valgrind][weight=1]"){
     SECTION("Test the Eulerian path algorithm") {
         BFS b;
         map<string, vector<string>> graph; 
@@ -156,10 +160,41 @@ TEST_CASE("Test3 Eulerian Path", "[valgrind][weight=1]"){
         bfs = b.runBFS(graph, "0");
         REQUIRE(b.hasEulerPath(bfs, "0") == 1);
         REQUIRE(b.hasEulerPath(bfs, "1") == 1);
+    }
+}
 
-        vector<string> ans = b.findEulerPath(graph, "3");
-        for (unsigned i = 0; i <ans.size(); i++) {
-            cout << ans.at(i);
-        }
+TEST_CASE("Calculate Distance", "[valgrind][weight=1]") {
+    string data = file_to_string("../src/data.txt");
+    map<string, vector<string>> tmp = parseData(data);
+
+    SECTION("GKA to MAG") {
+        // Goroka Airport (GKA) to Madang Airport (MAG) is 107 kilometers
+        double expected = 107;
+        double actual = CalculateDist(tmp, "GKA", "MAG");
+
+        // Checking that the calculation is within 10 km
+        REQUIRE(abs(actual - expected) < 10);
+    }
+    SECTION("SFO to JFK") {
+        double expected = 4151.79;
+        double actual = CalculateDist(tmp, "SFO", "JFK");
+
+        // Checking that the calculation is within 10 km
+        REQUIRE(abs(actual - expected) < 10);
+    }
+}
+
+TEST_CASE("Shortest Path", "[valgrind][weight=1]") {
+    SECTION("Basic case") {
+        // custom routes and data text files in /tests folder
+        map<string, vector<string>> route_map_1 = parseRoutes("../tests/routes1.txt");
+        string data = file_to_string("../tests/data1.txt");
+        map<string, vector<string>> data_map_1 = parseData(data);
+
+        WeightedGraph wg(route_map_1, data_map_1);
+        vector<string> actual = wg.ShortestPath("LAX", "AER");
+        vector<string> expected {"LAX", "ORD", "AER"};
+
+        REQUIRE(actual == expected);
     }
 }

@@ -37,22 +37,33 @@ map<string, vector<string>> parseData(string data) {
     map<string, vector<string>> data_maps;
     vector<string> lines;
 
-    int dataSize = SplitString(data, '\n', lines);
-    for (int i = 0; i < dataSize; i++) {
-        vector<string> vec;
-        SplitString(lines.at(i), ',', vec);
+    SplitString(data, '\n', lines);
 
-        vec.erase(vec.begin());
-        std::string airport = vec.at(0);
-        vec.erase(vec.begin());
-        data_maps[airport] = vec;
-        // std::cout << "-----------------" << std::endl;
-        // for (auto s : vec) {
-        //     std::cout << s << std::endl;
-        // }
+    for (string l : lines) {
+        vector<string> properties;
+        SplitString(l, ',', properties);
 
-        // std::cout << "-----------------" << std::endl;
+        string airport = properties[4];
+        if (airport == "\\N") {
+            continue;
+        }
+
+        // airports are surrounded by quotes, for example: "SFO"
+        // we want to remove the quotes so we can use just SFO as the map key
+        airport = airport.substr(1, 3);
+
+        data_maps[airport] = properties;
     }
+
+    // for (int i = 0; i < dataSize; i++) {
+    //     vector<string> vec;
+    //     SplitString(lines.at(i), ',', vec);
+
+    //     vec.erase(vec.begin());
+    //     std::string airport = vec.at(0);
+    //     vec.erase(vec.begin());
+    //     data_maps[airport] = vec;
+    // }
 
     return data_maps;
 }
