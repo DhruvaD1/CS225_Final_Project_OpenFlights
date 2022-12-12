@@ -7632,7 +7632,7 @@
 13711,"Lutselk'e Airport","Lutselk'e","Canada","YSG","CYLK",62.418303,-110.681998,596,\N,\N,\N,"airport","OurAirports"
 13712,"Engeløy Airport","Engeløy","Norway",\N,"ENEN",67.967222,14.9925,0,\N,\N,\N,"airport","OurAirports"
 13713,"Dwangwa Airport","Dwangwa","Malawi","DWA","FWDW",-12.5183,34.131901,1605,\N,\N,\N,"airport","OurAirports"
-13714,"Paloich Airport, Heliport","Higleig","South Sudan","HGI","HSFA",10.529167,32.500556,1290,\N,\N,\N,"airport","OurAirports"
+13714,"Paloich Airport, Heliport","Higleig","HGI","HSFA",10.529167,32.500556,1290,\N,\N,\N,"airport","OurAirports"
 13715,"Julian Carroll Airport","Jackson","United States",\N,"KJKL",37.59389877319336,-83.31729888916016,1381,\N,\N,\N,"airport","OurAirports"
 13716,"Beaufort MCAS - Merritt Field","Beaufort","United States",\N,"KNBC",32.4774017334,-80.723197937,37,\N,\N,\N,"airport","OurAirports"
 13717,"Camp Pendleton MCAS (Munn Field) Airport","Oceanside","United States",\N,"KNFG",33.30130005,-117.3550034,78,\N,\N,\N,"airport","OurAirports"

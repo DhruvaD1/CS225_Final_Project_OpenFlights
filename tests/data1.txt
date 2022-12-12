@@ -1,0 +1,5 @@
+3469,"San Francisco International Airport","San Francisco","United States","SFO","KSFO",37.61899948120117,-122.375,13,-8,"A","America/Los_Angeles","airport","OurAirports"
+3484,"Los Angeles International Airport","Los Angeles","United States","LAX","KLAX",33.94250107,-118.4079971,125,-8,"A","America/Los_Angeles","airport","OurAirports"
+3830,"Chicago O'Hare International Airport","Chicago","United States","ORD","KORD",41.9786,-87.9048,672,-6,"A","America/Chicago","airport","OurAirports"
+3797,"John F Kennedy International Airport","New York","United States","JFK","KJFK",40.63980103,-73.77890015,13,-5,"A","America/New_York","airport","OurAirports"
+2965,"Sochi International Airport","Sochi","Russia","AER","URSS",43.449902,39.9566,89,3,"N","Europe/Moscow","airport","OurAirports"

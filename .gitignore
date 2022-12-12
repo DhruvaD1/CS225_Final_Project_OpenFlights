@@ -1,6 +1,4 @@
 main
-main.o
 utils
-utils.o
 build/*
-bfs.o
+*.o

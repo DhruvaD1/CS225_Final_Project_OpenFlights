@@ -12,7 +12,7 @@ all: ${EXENAME}
 $(EXENAME): $(OBJS)
 	$(LD) $^ $(LDFLAGS) -o $@
 
-main.o: main.cpp 
+main.o: main.cpp
 	$(CXX) $< $(CXXFLAGS)
 
 create_graoh.o: create_graoh.cpp
