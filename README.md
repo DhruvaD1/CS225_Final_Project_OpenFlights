@@ -4,6 +4,9 @@
 This is a project for UIUC CS225 Data Structures class. 
 The project uses the Open Flights data set to run several graph algorithms on it to find out things like the BFS, cycles, and shortest path between airports.
 
+## Goals
+
+The main goal of the project is to devlop code to answer the questions what is the shortest path between two airports, detect cycles in airports, find he distance between airports, and to preform a BFS on airports.
 
 ## Group Members
 Dhruva Dammanna (dhruvad2)\
@@ -34,3 +37,5 @@ Dijkstra algorithm was made and used to find the shortest path in a weighted gra
 
 ## Eulers
 
+Eulers cycle detection is a way to determine if there is a cycle at a given point of a graph. We can use it here to detect if you can forms a cycle out of airports.
+The run time is O(V+E) and space is O(V).
