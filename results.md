@@ -18,3 +18,6 @@ We implemented Euler's path so that only one edge will be traversed exactly once
 
 We answered our leading questions by being able to find the shortest path between two airports, a start and end airport, while also being able to find all the airports that can be flown to using a Breadth First Search, which was all in our initial leading question. We were also able to implement Euler's Path to see if each airport in a graph would only be traversed once. We discovered a lot about the importance of data parsing and making sure the data is correct, since we faced a lot of problems with access null values initially. In addition, we also learned a lot more about writing tests for our algorithms making sure the tests are not shallow are very important and making sure you hit all possible cases. Overall, the OpenFlights Project was a great experience to learn more working in projects with a group using tools such as github while also diving deepr into the data structure algorithms welearned in class. 
 
+Examples of the data outputted by each algorithm
+https://github.com/DhruvaD1/CS225_Final_Project_OpenFlights/blob/main/ExampleOutput1.png
+https://github.com/DhruvaD1/CS225_Final_Project_OpenFlights/blob/main/ExampleOutput2.png
