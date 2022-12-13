@@ -130,6 +130,3 @@ an euler path does not exist for this airport
 
 
 
-After running Djikstra's shortest path on KDI and KUL we have determined that the shortest path from KDI to KUL is... 
-
-KDI-> UPG-> KUL

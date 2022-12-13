@@ -1,17 +1,13 @@
 #include <iostream>
 #include <vector>
-#include "utils.h"
-#include "utils.cpp"
+#include "../src/utils.h"
 #include <map>
 #include <algorithm>
-#include "bfs.h"
-#include "bfs.cpp"
-#include "parseInput.h"
-#include "parseInput.cpp"
+#include "../src/bfs.h"
+#include "../src/parseInput.h"
 #include <fstream>
 #include <map>
-#include "WeightedGraph.cpp"
-#include "WeightedGraph.h"
+#include "../src/WeightedGraph.h"
 #include <cstring>
 using namespace std;
 
