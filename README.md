@@ -36,6 +36,9 @@ We organized our important files into two main folders, src and tests. See the c
 Begin by cloning our repository into the CS225 default Docker container with this : <br />
 ```git clone https://github.com/DhruvaD1/CS225_Final_Project_OpenFlights.git```
 
+Enter the CS225_Final_Project_OpenFlights folder by entering the following command: <br />
+```cd CS225_Final_Project_OpenFlights```
+
 Once you are in the CS225_Final_Project_OpenFlights folder, follow the following steps: <br />
 ```
 mkdir build
