@@ -1,9 +1,6 @@
 #include <catch2/catch_test_macros.hpp>
-#include "../src/bfs.cpp"
 #include "../src/bfs.h"
-#include "../src/parseInput.cpp"
 #include "../src/parseInput.h"
-#include "../src/WeightedGraph.cpp"
 #include "../src/WeightedGraph.h"
 #include <map>
 #include <vector>
@@ -427,13 +424,10 @@ TEST_CASE("Shortest Path", "[valgrind][weight=1]") {
         WeightedGraph wg(route_map_1, data_map_1);
         vector<string> actual = wg.ShortestPath("LAX", "AER");
         vector<string> actual2 = wg.ShortestPath("KDI", "KUL");
-        
-        vector<string> expected {"LAX", "ORD", "AER"};
+        vector<string> expected { "LAX", "VKO", "AER" };
         vector<string> expected2  { "KDI", "UPG", "KUL" };
-
 
         REQUIRE(actual == expected);
         REQUIRE(actual2 == expected2);
-
     }
 }
