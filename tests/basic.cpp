@@ -427,8 +427,14 @@ TEST_CASE("Shortest Path", "[valgrind][weight=1]") {
 
         WeightedGraph wg(route_map_1, data_map_1);
         vector<string> actual = wg.ShortestPath("LAX", "AER");
+        vector<string> actual2 = wg.ShortestPath("KDI", "KUL");
+        
         vector<string> expected {"LAX", "ORD", "AER"};
+        vector<string> expected2  { "KDI", "UPG", "KUL" };
+
 
         REQUIRE(actual == expected);
+        REQUIRE(actual2 == expected2);
+
     }
 }
