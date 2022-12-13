@@ -22,7 +22,14 @@ We organized our important files into two main folders, src and tests. See the c
 
 `tests/basic.cpp`: Catch2 test cases ensuring our program runs correctly. Our test cases range in size of datasets and ensure edge cases are handled appropriately.
 
+`main.cpp` : main is in the default CS225_Final_Project_OpenFlights folder, and it is used to run our algorithms with input from the user. The input for main comes from input.txt. 
 
+`input.txt` : this is where the user can enter data to test out our algorithms and it is located in the default CS225_Final_Project_OpenFlights folder
+
+`output.txt` : this summarizes the results of what our algorithms produce based off the user's input after main is called
+
+`src/data.txt` : this is the data set that contains the lat and long of all the airports 
+`src/routes.txt` : this is the data set that contains all the routes that are flown to from each airport
 
 ## Testing and running our program
 Begin by cloning our repository into the CS225 default Docker container with this : <br />
@@ -43,7 +50,7 @@ make test
 
 To run our main.cpp stay in the build folder and run the following commands in order to compile and execute respectively: <br />
 ```
-g++ -o main .././src/main.cpp .././src/utils.cpp .././src/bfs.cpp .././src/parseInput.cpp .././src/WeightedGraph.cpp
+g++ -o main ../main.cpp
 ./main
 ```
 Main runs our algorithms on user inputted airports. These can be changed in the `input.txt` file, which is in the CS225_Final_Project_OpenFlights folder, and all data will be output to `output.txt` also located in CS225_Final_Project_OpenFlights. To input data into `input.txt`, type in the 3 digit airport code with all capital letters into the specified lines in `input.txt`. Instructions and information for inputting data are also written in input.txt.
