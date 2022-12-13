@@ -19,18 +19,24 @@ In the CS225 default docker container paste the following line into terminal: <b
 git clone https://github.com/DhruvaD1/CS225_Final_Project_OpenFlights.git
 
 Once you are in the CS225_Final_Project_OpenFlights folder, follow the following steps: <br />
-mkdir build <br />
-cd build <br />
-cmake .. <br />
+```
+mkdir build
+cd build
+cmake ..
+```
 
 To compile and run our test cases stay in the build folder and enter the following commands in order to compile and execute respectively: <br />
-make test <br />
-./test <br />
+```
+make test
+./test
+```
 
 To run our main.cpp stay in the build folder and run the following commands in order to compile and execute respectively: <br />
-g++ -o main .././src/main.cpp <br />
-./main <br />
+```
+g++ -o main .././src/main.cpp
+./main
+```
+Main runs our algorithms on user inputted airports. These can be changed in the `input.txt` file, which is in the CS225_Final_Project_OpenFlights folder, and all data will be output to `output.txt` also located in CS225_Final_Project_OpenFlights. To input data into `input.txt`, type in the 3 digit airport code with all capital letters into the specified lines in `input.txt`. Instructions and information for inputting data are also written in input.txt.
 
-Input data can be changed in the input.txt file, which is in the CS225_Final_Project_OpenFlights folder, and all data will be output to output.txt also located in CS225_Final_Project_OpenFlights. To input data into input.txt, type in the 3 digit airport code with all capital letters into the specified lines in input.txt. Instructions and information for inputting data are also written in input.txt.
 
 ATTENTION: Running main and tests can take up to several minutes. This is because a few of our testcases check our algorithms against the entire OpenFlights datasets.
