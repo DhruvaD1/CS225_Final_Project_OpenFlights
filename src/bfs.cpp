@@ -36,7 +36,7 @@ vector<string> BFS::runBFS(map<string, vector<string>> route_maps, string starti
 
 /**
     @param routes - is a vector containing all the aiports in the dataset
-           start_airport - is the starting at which we determine whether or not a euler's path exists at that location
+    @param start_airport - is the starting at which we determine whether or not a euler's path exists at that location
     @return
     path - a vector of strings containing the euler's path if there is one. If there isn't, return an empty vector
 */
@@ -69,7 +69,7 @@ void BFS::dfs(map<string, vector<string>> routes, string current_airport) {
 }
 /**
     @param starting_airport - determine if a bfs exists at the starting airport
-           airports - vector of all airports
+    @param airports - vector of all airports
     @return int - 0 if there is not an euler's path in the graph or if there is no euler's path starting
     at starting_airport. 1 otherwise
 */

@@ -123,7 +123,7 @@ XEQ, QOQ, YZG, YAT, KPR, RDV, SLQ, WWT, KCQ, PTH, IRP, SVR, QUV, YPO, SRV, KPV, 
 
 
 
-After running ASF through our algorithm we, we have determined that.... 
+After running CCK through our algorithm we, we have determined that.... 
 
 an euler path does not exist for this airport
 

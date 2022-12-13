@@ -16,11 +16,11 @@ DME
 
 Euler's Path
 Input the airport you would like to find an Euler's Path for in the line directly below. Please use all capital letters.
-ASF
+CCK
 
 Djikstra Shortest Path
 Input the airport you would like to start at in the line directly below. Please use all capital letters.
-KDI
+HTA
 
 Input the airport you would like to arrive at in the line directly below. Please use all capital letters.
-KUL
+BTK
