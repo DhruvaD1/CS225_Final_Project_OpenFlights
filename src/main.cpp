@@ -115,10 +115,10 @@ int main() {
         
     } else { //not a valid airport
         if (routes[djikstra_end_airport].size() != 0) {
-            output << djikstra_end_airport << " is not a valid airpot."  << endl;
+            output << djikstra_end_airport << " is not a valid airport."  << endl;
         }
         if (routes[djikstra_start_airport].size() != 0) {
-            output << djikstra_start_airport << " is not a valid airpot."  << endl;
+            output << djikstra_start_airport << " is not a valid airport."  << endl;
         }
     }
 }   
