@@ -28,11 +28,12 @@ make test <br />
 ./test <br />
 
 To run our main.cpp stay in the build folder and run the following commands in order to compile and execute respectively: <br />
-g++ -o airports .././src/main.cpp <br />
-./airports <br />
+g++ -o main .././src/main.cpp <br />
+./main <br />
 
 Input data can be changed in the input.txt file, which is in the CS225_Final_Project_OpenFlights folder, and all data will be output to output.txt also located in CS225_Final_Project_OpenFlights. To input data into input.txt, type in the 3 digit airport code with all capital letters into the specified lines in input.txt. Instructions and information for inputting data are also written in input.txt.
 
+ATTENTION: Running main may take up to several seconds.
 
 ## The Data (https://openflights.org/data.html)
 
