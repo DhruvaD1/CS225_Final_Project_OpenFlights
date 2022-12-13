@@ -10,7 +10,7 @@ Jalen Xing (jalenx2)\
 David Lin (davidl16)
 
 ## Files and algorithms
-We organized our important files into two main folders, src and tests.<br /><br />
+We organized our important files into two main folders, src and tests. See the comments in individual files for more details.<br /><br />
 
 `src/parseInput.cpp`: Implementation of dataset parsing. Creates an adjacency list representation of airports using the `routes` dataset and a map of each airport to their latitude/longitude coordinates using the `data` dataset.
 
