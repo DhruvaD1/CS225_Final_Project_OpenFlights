@@ -16,7 +16,7 @@ David Lin (davidl16)
 
 ## How to run our program
 In the CS225 default docker container paste the following line into terminal: <br />
-https://github.com/DhruvaD1/CS225_Final_Project_OpenFlights.git
+git clone https://github.com/DhruvaD1/CS225_Final_Project_OpenFlights.git
 
 Once you are in the CS225_Final_Project_OpenFlights folder, follow the following steps: <br />
 mkdir build <br />
