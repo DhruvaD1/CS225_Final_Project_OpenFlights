@@ -43,13 +43,13 @@ cd build
 cmake ..
 ```
 
-To compile and run our test cases stay in the build folder and enter the following commands in order to compile and execute respectively: <br />
+To compile and run our test cases, stay in the build folder and enter the following commands in order to compile and execute respectively: <br />
 ```
 make test
 ./test
 ```
 
-To run our main.cpp stay in the build folder and run the following commands in order to compile and execute respectively: <br />
+To run our main.cpp, stay in the build folder and run the following commands in order to compile and execute respectively: <br />
 ```
 g++ -o main ../main.cpp
 ./main
