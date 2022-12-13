@@ -1,7 +1,7 @@
 # CS225 Final Project: OpenFlights
 
 ## Introduction
-This is our final project for CS225. Our project runs several graph algorithms on the OpenFlights datasets in order to answer our leading questions. These algorithms include a breadth-first-search, finding the shortest path between two airports, and finding the Euler circuit from an airport.
+This is our final project for CS225. Our project runs several graph algorithms on the OpenFlights datasets in order to answer our leading questions. These algorithms include a breadth-first-search, finding the shortest path between two airports, and finding the Euler circuit from an airport. Link to the data set https://openflights.org/data.html
 
 ## Group members
 Dhruva Dammanna (dhruvad2)\
