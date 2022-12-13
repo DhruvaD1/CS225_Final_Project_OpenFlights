@@ -16,9 +16,11 @@ We organized our important files into two main folders, src and tests.<br /><br 
 
 `src/utils.cpp`: Parsing helper functions.
 
-`src/bfs.cpp`: Implementation of BFS traversal, DFS traversal, and finding a Euler path. The BFS algorithm returns a vector of airport codes in the order they were traversed to. The Euler's path algorithm utilizes this BFS path to determine if a Euler circuit exists. If it does, DFS is used to find the exact path.
+`src/bfs.cpp`: Implementation of BFS traversal, DFS traversal, and finding a Euler path. The BFS algorithm returns a vector of airport codes in the order they were traversed to. The Euler's path algorithm utilizes this BFS path to determine if a Euler circuit exists. If it does, DFS is used to find the exact path, which is also returned as a vector of airport codes.
 
 `src/WeightedGraph.cpp`: Implementation of Dijksta's Algorithm to find the shortest path between two nodes. A weighted graph is first constructed using the adjacency list and data map created using functions from `parseInput.cpp`. This weighted graph is represented using a nested map structure, where weights are the distance calculated between two airports in kilometers. Dijkstra's Algorithm uses this weighted graph to find the shortest path of airports to get from A to B, and returns this path as a vector of airport codes.
+
+`tests/basic.cpp`: Catch2 test cases ensuring our program runs correctly. Our test cases range in size of datasets and ensure edge cases are handled appropriately.
 
 
 
