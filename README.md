@@ -15,20 +15,21 @@ Jalen Xing (jalenx2)\
 David Lin (davidl16)
 
 ## How to run our program
-In the CS225 default docker container paste the following line into terminal: https://github.com/DhruvaD1/CS225_Final_Project_OpenFlights.git.
+In the CS225 default docker container paste the following line into terminal: <br />
+https://github.com/DhruvaD1/CS225_Final_Project_OpenFlights.git
 
-Once you are in the CS225_Final_Project_OpenFlights folder, follow the following steps:
-mkdir build
-cd build
-cmake ..
+Once you are in the CS225_Final_Project_OpenFlights folder, follow the following steps: <br />
+mkdir build <br />
+cd build <br />
+cmake .. <br />
 
-To compile and run our test cases stay in the build folder and enter the following commands in order to compile and execute respectively:
-make test
-./test
+To compile and run our test cases stay in the build folder and enter the following commands in order to compile and execute respectively: <br />
+make test <br />
+./test <br />
 
-To run our main.cpp stay in the build folder and run the following commands in order to compile and execute respectively:
-g++ -o airports .././src/main.cpp
-./airports
+To run our main.cpp stay in the build folder and run the following commands in order to compile and execute respectively: <br />
+g++ -o airports .././src/main.cpp <br />
+./airports <br />
 
 Input data can be changed in the input.txt file, which is in the CS225_Final_Project_OpenFlights folder, and all data will be output to output.txt also located in CS225_Final_Project_OpenFlights. To input data into input.txt, type in the 3 digit airport code with all capital letters into the specified lines in input.txt. Instructions and information for inputting data are also written in input.txt.
 
