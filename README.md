@@ -1,22 +1,17 @@
-# CS225_Final_Project_OpenFlights
+# CS225 Final Project: OpenFlights
 
-## About
-This is a project for UIUC CS225 Data Structures class. 
-The project uses the Open Flights data set to run several graph algorithms on it to find out things like the BFS, cycles, and shortest path between airports.
+## Introduction
+This is our final project for CS225. Our project runs several graph algorithms on the OpenFlights datasets in order to answer our leading questions. These algorithms include a breadth-first-search, finding the shortest path between two airports, and finding the Euler circuit from an airport.
 
-## Goals
-
-The main goal of the project is to devlop code to answer the questions what is the shortest path between two airports, detect cycles in airports, find he distance between airports, and to preform a BFS on airports.
-
-## Group Members
+## Group members
 Dhruva Dammanna (dhruvad2)\
 Alan Zhang (alanyz2)\
 Jalen Xing (jalenx2)\
 David Lin (davidl16)
 
-## How to run our program
-In the CS225 default docker container paste the following line into terminal: <br />
-git clone https://github.com/DhruvaD1/CS225_Final_Project_OpenFlights.git
+## Testing and running our program
+Begin by cloning our repository into the CS225 default Docker container with this : <br />
+```git clone https://github.com/DhruvaD1/CS225_Final_Project_OpenFlights.git```
 
 Once you are in the CS225_Final_Project_OpenFlights folder, follow the following steps: <br />
 ```
