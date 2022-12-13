@@ -1,0 +1,59 @@
+# CS225_Final_Project_OpenFlights
+
+## About
+This is a project for UIUC CS225 Data Structures class. 
+The project uses the Open Flights data set to run several graph algorithms on it to find out things like the BFS, cycles, and shortest path between airports.
+
+## Goals
+
+The main goal of the project is to devlop code to answer the questions what is the shortest path between two airports, detect cycles in airports, find he distance between airports, and to preform a BFS on airports.
+
+## Group Members
+Dhruva Dammanna (dhruvad2)\
+Alan Zhang (alanyz2)\
+Jalen Xing (jalenx2)\
+David Lin (davidl16)
+
+## How to run
+To run the code run make main in the termainal and do ./main to run
+
+To run the test cases make test in the terminal and then do ./test to run the tests
+
+## The Data (https://openflights.org/data.html)
+
+There were two datasetst both from the Open Flights Data Set. One that had airports that flew to eachother and one that had information about individual airports like
+the location of it
+
+The data was processed by using functions from mp_scheduele file_to_string and splitString. We also created two functions to parse the data from the two datasets 
+parseData and parseRoutes. Both of these fucntions used the two functions from mp_scheduele. 
+
+Lastly in the data there were some places like helicopter landing sites that airplanes can not land in so those had to be removed from the data.
+
+## BFS
+
+The BFS created ran BFS search from a chosen starting point and returned a vector of every airport in order visted. Also the function printed out how many kilometers apart the two airports at the start and the end were. BFS runs in O(m+n) runtime and O(V) space.
+
+![](BFS.gif)
+
+
+## Dijkstra 
+
+Dijkstra algorithm was made and used to find the shortest path in a weighted graph. It is especiall useful in this because it will give the fastest route from one airport to another. It runs in O(V log V) runtime and O(V) space.
+
+![](Dij.gif)
+
+## Eulers
+
+Eulers cycle detection is a way to determine if there is a cycle at a given point of a graph. We can use it here to detect if you can forms a cycle out of airports.
+The run time is O(V+E) and space is O(V).
+
+![](euler.gif)
+
+## Findings
+
+With the BFS we found the BFS Traversal from a starting point and the distance traveled. We noticed that pretty much every airport in the world is connected in some way. So you can go from pretty much any aiport to another aiport.
+
+With the Euler Cycle we saw that there are a lot of cycles between airports. So being able to going in a full cycle from any airport is possible from most airports.
+
+With the Dijkstra algorithm we noticed that the shortest path from an aiport normally involved passing through a popular airport like ORD, DFW, and LAX because they have flights to many different airports.
+
