@@ -420,7 +420,6 @@ TEST_CASE("Shortest Path", "[valgrind][weight=1]") {
         REQUIRE(actual == expected);
     }
     SECTION("Large Scale Test Case Using entire data set") {
-        // custom routes and data text files in /tests folder
         map<string, vector<string>> route_map_1 = parseRoutes("../src/routes.txt");
         string data = file_to_string("../src/data.txt");
         map<string, vector<string>> data_map_1 = parseData(data);
