@@ -12,7 +12,6 @@
 #include <numbers>
 
 using namespace std;
-// #include "../src/main.cpp"
 
 #include "bfs.h"
 
@@ -97,6 +96,15 @@ TEST_CASE("Test1 BFS", "[valgrind][weight=1]"){
 
         // Doesn't include aiports that have no key or values related to starting airport
         REQUIRE(out3 == ans);
+    } SECTION("Large Scale BFS test cases work") { 
+        BFS b;
+        map<string, vector<string>> graph; 
+        map<string, vector<string>> tmp = parseRoutes("../src/routes.txt");
+
+        vector<string> out = b.runBFS(tmp, "SFO");
+
+        REQUIRE(out.size() == 3378);
+
     }
 }
 
@@ -125,47 +133,6 @@ TEST_CASE("Test2 parseRoutes / adjacency list", "[valgrind][weight=1]"){
 }
 
 TEST_CASE("Test3 Eulerian Path", "[valgrind][weight=1]"){
-    SECTION("Test the Eulerian path algorithm") {
-        BFS b;
-        map<string, vector<string>> graph; 
-
-        vector<string> vec0;
-        vec0.push_back("1");
-        graph["0"] = vec0;
-
-        vector<string> vec1;
-        vec1.push_back("2");
-        graph["1"] = vec1;
-
-        vector<string> vec2;
-        vec2.push_back("0");
-        graph["2"] = vec2;
-
-        vector<string> vec3;
-        vec3.push_back("0");
-        vec3.push_back("4");
-        graph["3"] = vec3;
-
-        vector<string> vec4;
-        vec4.push_back("3");
-        graph["4"] = vec4;
-
-        /*running a bfs starting at 4 will create a graph with 
-            nodes 0,1,2,3,4 and an euler path will only exist starting at 3 */
-        vector<string> bfs = b.runBFS(graph, "4");
-        REQUIRE(b.hasEulerPath(bfs, "4") == 0);
-        REQUIRE(b.hasEulerPath(bfs, "3") == 1);
-        REQUIRE(b.hasEulerPath(bfs, "0") == 0);
-        //running a bfs starting at 0 will be a graph with nodes 0,1,2, and will be an euler circuit
-        bfs = b.runBFS(graph, "0");
-        REQUIRE(b.hasEulerPath(bfs, "0") == 1);
-        REQUIRE(b.hasEulerPath(bfs, "1") == 1);
-
-        // vector<string> ans = b.findEulerPath(graph, "3");
-        // for (unsigned i = 0; i <ans.size(); i++) {
-        //     cout << ans.at(i);
-        // }
-    }
     SECTION("Test the Eulerian path algorithm") {
         BFS b;
         map<string, vector<string>> graph; 
@@ -249,7 +216,7 @@ TEST_CASE("Test3 Eulerian Path", "[valgrind][weight=1]"){
         REQUIRE(b.hasEulerPath(bfs, "4") == 0);
 
     }
-    SECTION("Test the Eulerian path algorithm using numbers") {
+    SECTION("Test the Eulerian path algorithm using numbers with one Euler Path") {
         BFS b;
         map<string, vector<string>> graph; 
 
@@ -306,7 +273,7 @@ TEST_CASE("Test3 Eulerian Path", "[valgrind][weight=1]"){
         REQUIRE(ans == expected);
     }
 
-    SECTION("Test the Eulerian path algorithm large scale") {
+    SECTION("Test the Eulerian path algorithm large scale w/ No Euler Path #1") {
         BFS b;
         map<string, vector<string>> graph; 
         map<string, vector<string>> tmp = parseRoutes("../src/routes.txt");
@@ -318,7 +285,7 @@ TEST_CASE("Test3 Eulerian Path", "[valgrind][weight=1]"){
 
     }
 
-    SECTION("Test the Eulerian path algorithm large scale") {
+    SECTION("Test the Eulerian path algorithm large scale w/ No Euler Path #2") {
         BFS b;
         map<string, vector<string>> graph; 
         map<string, vector<string>> tmp = parseRoutes("../src/routes.txt");
@@ -331,7 +298,7 @@ TEST_CASE("Test3 Eulerian Path", "[valgrind][weight=1]"){
     }
     
 
-    SECTION("Test the Eulerian path algorithm large scale") {
+    SECTION("Test the Eulerian path algorithm large scale w/ No Euler Path #2") {
         BFS b;
         map<string, vector<string>> graph; 
         map<string, vector<string>> tmp = parseRoutes("../src/routes.txt");
@@ -403,10 +370,59 @@ TEST_CASE("Calculate Distance", "[valgrind][weight=1]") {
 }
 
 TEST_CASE("Shortest Path", "[valgrind][weight=1]") {
-    SECTION("Basic case") {
+    SECTION("Basic case - Check to see if algorithm works") {
         // custom routes and data text files in /tests folder
         map<string, vector<string>> route_map_1 = parseRoutes("../tests/routes1.txt");
         string data = file_to_string("../tests/data1.txt");
+        map<string, vector<string>> data_map_1 = parseData(data);
+
+        WeightedGraph wg(route_map_1, data_map_1);
+        vector<string> actual = wg.ShortestPath("LAX", "AER");
+        vector<string> expected {"LAX", "ORD", "AER"};
+
+        REQUIRE(actual == expected);
+    }
+
+    SECTION("Basic case - Direct Flight") {
+        // custom routes and data text files in /tests folder
+        map<string, vector<string>> route_map_1 = parseRoutes("../tests/routes1.txt");
+        string data = file_to_string("../tests/data1.txt");
+        map<string, vector<string>> data_map_1 = parseData(data);
+
+        WeightedGraph wg(route_map_1, data_map_1);
+        vector<string> actual = wg.ShortestPath("SFO", "LAX");
+        vector<string> expected {"SFO", "LAX"};
+
+        REQUIRE(actual == expected);
+    }
+    SECTION("Basic case - Two Transfers") {
+        // custom routes and data text files in /tests folder
+        map<string, vector<string>> route_map_1 = parseRoutes("../tests/routes1.txt");
+        string data = file_to_string("../tests/data1.txt");
+        map<string, vector<string>> data_map_1 = parseData(data);
+
+        WeightedGraph wg(route_map_1, data_map_1);
+        vector<string> actual = wg.ShortestPath("SFO", "AER");
+        vector<string> expected { "SFO", "LAX", "ORD", "AER" };
+
+        REQUIRE(actual == expected);
+    }
+    SECTION("Basic case - Return to Original") {
+        // custom routes and data text files in /tests folder
+        map<string, vector<string>> route_map_1 = parseRoutes("../tests/routes1.txt");
+        string data = file_to_string("../tests/data1.txt");
+        map<string, vector<string>> data_map_1 = parseData(data);
+
+        WeightedGraph wg(route_map_1, data_map_1);
+        vector<string> actual = wg.ShortestPath("SFO", "SFO");
+        vector<string> expected { "SFO"};
+
+        REQUIRE(actual == expected);
+    }
+    SECTION("Large Scale Test Case Using entire data set") {
+        // custom routes and data text files in /tests folder
+        map<string, vector<string>> route_map_1 = parseRoutes("../src/routes.txt");
+        string data = file_to_string("../src/data.txt");
         map<string, vector<string>> data_map_1 = parseData(data);
 
         WeightedGraph wg(route_map_1, data_map_1);

@@ -10,11 +10,10 @@
 
 using namespace std;
 
-class parseInput {
+class ParseInput {
     public: 
         map<string, vector<string>> parseRoutes(string routeFile);
         map<string, vector<string>> parseData(string data);
-        // string file_to_string(const string & filename);
-
-        // int SplitString(const string & str1, char sep, vector<string> &fields);
+        int SplitString(const std::string & str1, char sep, std::vector<std::string> &fields);
+        std::string file_to_string(const std::string& filename);
 };

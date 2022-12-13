@@ -3,9 +3,15 @@
 WeightedGraph::WeightedGraph(map<string, vector<string>> route_map, map<string, vector<string>> data_map) {
     for (auto entry : route_map) {
         string start_airport = entry.first;
+        if (data_map.find(start_airport) == data_map.end()) {
+            continue;
+        }
         map<string, double> neighbors;
 
         for (string n : entry.second) {
+            if (data_map.find(n) == data_map.end()) {
+                continue;
+            }
             neighbors[n] = CalculateDist(data_map, start_airport, n);
         }
 
@@ -64,11 +70,11 @@ void WeightedGraph::BuildPath(string airport, map<string, string> parent, vector
 }
 
 double CalculateDist(map<string, vector<string>> data_map, string airport1, string airport2) {
-    double airport1_lat = stod(data_map[airport1][6]) * (3.15149/180);
-    double airport1_lon = stod(data_map[airport1][7]) * (3.15149/180);
+    double airport1_lat = stod(data_map[airport1][0]) * (3.15149/180);
+    double airport1_lon = stod(data_map[airport1][1]) * (3.15149/180);
 
-    double airport2_lat = stod(data_map[airport2][6]) * (3.15149/180);
-    double airport2_lon = stod(data_map[airport2][7]) * (3.15149/180);
+    double airport2_lat = stod(data_map[airport2][0]) * (3.15149/180);
+    double airport2_lon = stod(data_map[airport2][1]) * (3.15149/180);
 
     double dlat = airport2_lat - airport1_lat;
     double dlon = airport2_lon - airport1_lon;
@@ -76,5 +82,6 @@ double CalculateDist(map<string, vector<string>> data_map, string airport1, stri
     double ans = pow(sin(dlat/2), 2) + cos(airport1_lat) * cos(airport2_lat) * pow(sin(dlon/2), 2);
     ans = 2 * asin(sqrt(ans));
     ans = ans * 6371;
+
     return ans;
 }

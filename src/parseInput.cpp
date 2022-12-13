@@ -1,4 +1,3 @@
-    
 #include "parseInput.h"
 #include "utils.h"
 #include <sstream>
@@ -9,6 +8,7 @@
 #include <iostream>
 using namespace std;
 
+// Finds all the airports each airport flies to 
 map<string, vector<string>> parseRoutes(string routeFile) {
     string routes = file_to_string(routeFile);
     vector<string> line;
@@ -25,66 +25,26 @@ map<string, vector<string>> parseRoutes(string routeFile) {
 
     return route_maps;
 }
-    // for (auto const& it : route_maps) {
-    //     cout << it.first;
-    //     vector<string> tmp = it.second;
-    //     for (unsigned i = 0; i < tmp.size(); i++) {
-    //         cout << tmp.at(i) << " ";
-    //     }
-    //     cout << endl;
-    // }
+
+// Parses the data for each airport based on its properties
 map<string, vector<string>> parseData(string data) {
     map<string, vector<string>> data_maps;
     vector<string> lines;
 
-    SplitString(data, '\n', lines);
+    int dataSize = SplitString(data, '\n', lines);
+    for (int i = 0; i < dataSize; i++) {
+        vector<string> vec;
+        SplitString(lines.at(i), ',', vec);
 
-    for (string l : lines) {
-        vector<string> properties;
-        SplitString(l, ',', properties);
+        vec.erase(vec.begin());
+        
+        if(vec.at(3).length()==5){
 
-        string airport = properties[4];
-        if (airport == "\\N") {
-            continue;
+            std::string airport = vec.at(3).substr(1,3);
+            vec.erase(vec.begin());
+            data_maps[airport] = {vec.at(4),vec.at(5)};
         }
-
-        // airports are surrounded by quotes, for example: "SFO"
-        // we want to remove the quotes so we can use just SFO as the map key
-        airport = airport.substr(1, 3);
-
-        data_maps[airport] = properties;
     }
-
-    // for (int i = 0; i < dataSize; i++) {
-    //     vector<string> vec;
-    //     SplitString(lines.at(i), ',', vec);
-
-    //     vec.erase(vec.begin());
-    //     std::string airport = vec.at(0);
-    //     vec.erase(vec.begin());
-    //     data_maps[airport] = vec;
-    // }
-
+ 
     return data_maps;
 }
-
-// string file_to_string(const string& filename){
-//   std::ifstream text(filename);
-
-//   std::stringstream strStream;
-//   if (text.is_open()) {
-//     strStream << text.rdbuf();
-//   }
-//   return strStream.str();
-// }
-
-// int SplitString(const string & str1, char sep, vector<string> &fields) {
-//     std::string str = str1;
-//     std::string::size_type pos;
-//     while((pos=str.find(sep)) != std::string::npos) {
-//         fields.push_back(str.substr(0,pos));
-//         str.erase(0,pos+1);  
-//     }
-//     fields.push_back(str);
-//     return fields.size();
-// }

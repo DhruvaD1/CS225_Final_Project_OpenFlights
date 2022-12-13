@@ -1,0 +1,26 @@
+Below we will have three different places to input data. 
+
+The first input will be for running a BFS starting at the inputted airport. The data returned will represent
+all the airports you can fly to either directly or with connection flights starting from the inputted airport.
+
+The second input will be for returning an Euler's path, starting at a given airport. The returned data will 
+represent the path that will fly every route starting at the inputted airport, without cycling over the same 
+route more than once
+
+The third input will take in two airports, and will return the shortest path between those two airports
+
+
+BFS
+Input the airport you would like to run a BFS on in the line directly below. Please use all capital letters.
+DME
+
+Euler's Path
+Input the airport you would like to find an Euler's Path for in the line directly below. Please use all capital letters.
+ASF
+
+Djikstra Shortest Path
+Input the airport you would like to start at in the line directly below. Please use all capital letters.
+KDI
+
+Input the airport you would like to arrive at in the line directly below. Please use all capital letters.
+KUL
