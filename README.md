@@ -33,7 +33,7 @@ g++ -o main .././src/main.cpp <br />
 
 Input data can be changed in the input.txt file, which is in the CS225_Final_Project_OpenFlights folder, and all data will be output to output.txt also located in CS225_Final_Project_OpenFlights. To input data into input.txt, type in the 3 digit airport code with all capital letters into the specified lines in input.txt. Instructions and information for inputting data are also written in input.txt.
 
-ATTENTION: Running main may take up to several seconds.
+ATTENTION: Running main can take up to several minutes.
 
 ## The Data (https://openflights.org/data.html)
 
